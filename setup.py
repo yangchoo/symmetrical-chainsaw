@@ -34,6 +34,7 @@ setup(
     ),
     author='Yang',
     author_email='test@test',
+    url='test.com',
     packages=find_packages('src'),
     package_dir={'': 'src'},
     py_modules=[splitext(basename(path))[0] for path in glob('src/*.py')],
@@ -59,7 +60,7 @@ setup(
     project_urls={
         'Documentation': 'https://symmetrical-chainsaw.readthedocs.io/',
         'Changelog': 'https://symmetrical-chainsaw.readthedocs.io/en/latest/changelog.html',
-        'Issue Tracker': 'https://github.com/yang/symmetrical-chainsaw/issues',
+        'Issue Tracker': 'https://github.com/yangchoo/symmetrical-chainsaw/issues',
     },
     keywords=[
         # eg: 'keyword1', 'keyword2', 'keyword3',
@@ -72,10 +73,5 @@ setup(
         # eg:
         #   'rst': ['docutils>=0.11'],
         #   ':python_version=="2.6"': ['argparse'],
-    },
-    entry_points={
-        'console_scripts': [
-            'symmetrical-chainsaw = symmetrical-chainsaw.cli:main',
-        ]
     },
 )

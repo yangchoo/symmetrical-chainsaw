@@ -24,8 +24,8 @@ version = release = '0.0.0'
 pygments_style = 'trac'
 templates_path = ['.']
 extlinks = {
-    'issue': ('https://github.com/yang/symmetrical-chainsaw/issues/%s', '#'),
-    'pr': ('https://github.com/yang/symmetrical-chainsaw/pull/%s', 'PR #'),
+    'issue': ('https://github.com/yangchoo/symmetrical-chainsaw/issues/%s', '#'),
+    'pr': ('https://github.com/yangchoo/symmetrical-chainsaw/pull/%s', 'PR #'),
 }
 # on_rtd is whether we are on readthedocs.org
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
