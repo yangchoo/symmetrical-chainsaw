@@ -3,45 +3,59 @@ dist: xenial
 cache: false
 env:
   global:
-    - LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so
-    - SEGFAULT_SIGNALS=all
+  - LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so
+  - SEGFAULT_SIGNALS=all
 matrix:
   include:
-    - python: '3.6'
-      env:
-        - TOXENV=docs
-    - env:
-        - TOXENV=py35
-      python: '3.5'
-    - env:
-        - TOXENV=py36
-      python: '3.6'
-    - env:
-        - TOXENV=py37
-      python: '3.7'
-    - env:
-        - TOXENV=py38
-      python: '3.8'
-    - env:
-        - TOXENV=pypy3
-        - TOXPYTHON=pypy3
-      python: 'pypy3'
+  - python: '3.6'
+    env:
+    - TOXENV=docs
+  - env:
+    - TOXENV=py35
+    python: '3.5'
+  - env:
+    - TOXENV=py36
+    python: '3.6'
+  - env:
+    - TOXENV=py37
+    python: '3.7'
+  - env:
+    - TOXENV=py38
+    python: '3.8'
+  - env:
+    - TOXENV=pypy3
+    - TOXPYTHON=pypy3
+    python: pypy3
 before_install:
-  - python --version
-  - uname -a
-  - lsb_release -a || true
+- python --version
+- uname -a
+- lsb_release -a || true
 install:
-  - python -mpip install --progress-bar=off tox -rci/requirements.txt
-  - virtualenv --version
-  - easy_install --version
-  - pip --version
-  - tox --version
+- python -mpip install --progress-bar=off tox -rci/requirements.txt
+- virtualenv --version
+- easy_install --version
+- pip --version
+- tox --version
 script:
-  - tox -v
+- tox -v
 after_failure:
-  - more .tox/log/* | cat
-  - more .tox/*/log/* | cat
+- more .tox/log/* | cat
+- more .tox/*/log/* | cat
 notifications:
   email:
     on_success: never
     on_failure: always
+
+before_deploy:
+  - python setup.py sdist
+  - python setup.py bdist_wheel
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: LgXjzxDSTA6kG6+MOuGK9KkPLspDfi/bQauJ7ztxnGg58eWWukQ0Uz3WdWlC4pEzR7XpDNm6tkSRrYP1F/ERfgpwX+onzELEvwFes/n7mbL0891InrUl5gfBI3+3TTSzGyy3pyISW3PtVbNMx4TIsmxr2PcwmOmBbcM76s2lQpV3Vo9eYRaVHvO41oCNgGrM7TfKi5HuZEEbvlFVXseEVLGiyihjHFhsnGULH3dvh58LAxDAsC4tqpL3hrkdIe4rVJQbwe1aupJuPOH9U8n5GHLJNJKjCHnD0wmiXK80n7vLeDIRZVoNiPaCbjHMKaegRDTIHIwHJJpu7HhBr7yQZDox8f0znemEkHiUKbymrpfPI/Gdb+v0ihQt4Inrg12ArYb/siDPmfoRD1AJEzuzgWsi+91geAKUJpp41STf+AlZ5kHiIw9RVHkL3gH6gjWn3LA2XQA9pK1Vc6Zqze2teLQBX8+nKsIir2MnOoBR3i6YYPppjMTYl/YAuvdFmXnCn0gtyz+O31j9Zoy4t1ewIjxEoM5eUuYo4PvdUnntlevjJF5y/6caA/CBL+eeC6AX8OzEqnecTeUXmN9J/71SIllWYNqP9uqRazQQKYr6dJiCbZwLBAbyfBdF1WgH4gK0BvnYxE+rfX91vr2I3JxG6NUrCH5oNLHP3Datz2yQHLk=
+  file: dist/*
+  draft: true
+  on:
+    repo: yangchoo/symmetrical_chainsaw
+    tags: $TRAVIS_TAG =~ ^v[0-9]+\.[0-9]+\.[0-9]+$
