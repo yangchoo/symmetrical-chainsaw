@@ -47,7 +47,7 @@ Overview
 
 .. end-badges
 
-Travis playground.
+Travis playground. Test.
 
 * Free software: BSD 2-Clause License
 

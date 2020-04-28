@@ -46,11 +46,19 @@ before_deploy:
   - python setup.py sdist
   - python setup.py bdist_wheel
 deploy:
+- provider: releases
   skip_cleanup: true
-  provider: releases
   api_key:
     secure: LgXjzxDSTA6kG6+MOuGK9KkPLspDfi/bQauJ7ztxnGg58eWWukQ0Uz3WdWlC4pEzR7XpDNm6tkSRrYP1F/ERfgpwX+onzELEvwFes/n7mbL0891InrUl5gfBI3+3TTSzGyy3pyISW3PtVbNMx4TIsmxr2PcwmOmBbcM76s2lQpV3Vo9eYRaVHvO41oCNgGrM7TfKi5HuZEEbvlFVXseEVLGiyihjHFhsnGULH3dvh58LAxDAsC4tqpL3hrkdIe4rVJQbwe1aupJuPOH9U8n5GHLJNJKjCHnD0wmiXK80n7vLeDIRZVoNiPaCbjHMKaegRDTIHIwHJJpu7HhBr7yQZDox8f0znemEkHiUKbymrpfPI/Gdb+v0ihQt4Inrg12ArYb/siDPmfoRD1AJEzuzgWsi+91geAKUJpp41STf+AlZ5kHiIw9RVHkL3gH6gjWn3LA2XQA9pK1Vc6Zqze2teLQBX8+nKsIir2MnOoBR3i6YYPppjMTYl/YAuvdFmXnCn0gtyz+O31j9Zoy4t1ewIjxEoM5eUuYo4PvdUnntlevjJF5y/6caA/CBL+eeC6AX8OzEqnecTeUXmN9J/71SIllWYNqP9uqRazQQKYr6dJiCbZwLBAbyfBdF1WgH4gK0BvnYxE+rfX91vr2I3JxG6NUrCH5oNLHP3Datz2yQHLk=
   file: dist/*
   on:
     repo: yangchoo/symmetrical_chainsaw
+    tags: $TRAVIS_TAG =~ ^v[0-9]+\.[0-9]+\.[0-9]+$
+# pypi
+- provider: pypi
+  username: __token__
+  password:
+    secure: Mx6QNV6pxQYyzpuM9vps3YVpO+w3eeu+kKB5KHxngW4Nkfet84zgpgbEcaMiPNDjyUOyF858Qr3B4aSeoijiU+zFVVExCSFvAm2nKPcoJNcGzt+tV+ZxFypqZir0PUPAyVIc0MgpFermHcOIG9rJu7ze4iZdSpmx0GVypcF7EJ/mV/SkOI8OdT7LiNQP9MyQaV0bWzUIMeDSkuSJGNENOvRiYI5fsTTaOwVAQahs0wtst3fKL1kdWRfPZEZCoNUL7G2jJGzfIUGcNHiIY+mdY9dmXvHnm+kKX9WThIQtHyeFNuCq6FqKfQJmSgNAVIbnTuJQo93B252AC1NTDvIh6MnRhUzmBAFw4stP9GYyAvKwbilg3MfL9TCIplY2aPHSb0cfbnn3bWxwqhd7BRJZxQws1mXbQKWcrkb5AYhFz+FbvfCL1T/jKqrTQcaXWFyiu2z7T2CXmEk4JHr7nPYwYrNX/nTEelhk6W8BbTwXtAQ4WbF20L1FLxEFPDNcU9eei7yN8tRkYqImCBTihcZ3m3/O8aQj+v8f8EWcFUCIKvJnezG4eviNk+qzl7HX/ggbVKiRUX9D+d9iyBJabFJdj14QEe/cZ1dmzTFRAH6H4tnA3S1brb25IDQYH1gf7IFOjAqwAjXCppN4DagxlR9BQUK3ztKFVl/MhZxpszN4ZAE=
+  edge: true
+  on:
     tags: $TRAVIS_TAG =~ ^v[0-9]+\.[0-9]+\.[0-9]+$
