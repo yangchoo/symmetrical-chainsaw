@@ -33,8 +33,8 @@ setup(
         re.sub(':[a-z]+:`~?(.*?)`', r'``\1``', read('CHANGELOG.rst'))
     ),
     author='Yang',
-    author_email='test@test',
-    url='test.com',
+    author_email='me@yang.works',
+    url='github.com/yangchoo/symmetrical_chainsaw',
     packages=find_packages('src'),
     package_dir={'': 'src'},
     py_modules=[splitext(basename(path))[0] for path in glob('src/*.py')],
