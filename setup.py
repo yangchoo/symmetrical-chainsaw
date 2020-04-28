@@ -25,7 +25,7 @@ def read(*names, **kwargs):
 
 setup(
     name='symmetrical_chainsaw',
-    version='0.0.3',
+    version='0.0.4',
     license='BSD-2-Clause',
     description='test package',
     long_description='%s\n%s' % (
