@@ -25,7 +25,7 @@ def read(*names, **kwargs):
 
 setup(
     name='symmetrical_chainsaw',
-    version='0.0.2',
+    version='0.0.3',
     license='BSD-2-Clause',
     description='test package',
     long_description='%s\n%s' % (
@@ -34,7 +34,7 @@ setup(
     ),
     author='Yang',
     author_email='me@yang.works',
-    url='github.com/yangchoo/symmetrical_chainsaw',
+    url='https://github.com/yangchoo/symmetrical_chainsaw',
     packages=find_packages('src'),
     package_dir={'': 'src'},
     py_modules=[splitext(basename(path))[0] for path in glob('src/*.py')],
