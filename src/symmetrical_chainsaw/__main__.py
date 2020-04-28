@@ -1,5 +1,5 @@
 """
-Entrypoint module, in case you use `python -msymmetrical-chainsaw`.
+Entrypoint module, in case you use `python -msymmetrical_chainsaw`.
 
 
 Why does this file exist, and why __main__? For more info, read:
@@ -10,7 +10,7 @@ Why does this file exist, and why __main__? For more info, read:
 """
 import sys
 
-from symmetrical-chainsaw.cli import main
+from symmetrical_chainsaw.cli import main
 
 if __name__ == "__main__":
     sys.exit(main())

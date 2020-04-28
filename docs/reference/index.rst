@@ -4,4 +4,4 @@ Reference
 .. toctree::
     :glob:
 
-    symmetrical-chainsaw*
+    symmetrical_chainsaw*

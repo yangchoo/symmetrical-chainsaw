@@ -1,5 +1,5 @@
 
-from symmetrical-chainsaw.cli import main
+from symmetrical_chainsaw.cli import main
 
 
 def test_main():

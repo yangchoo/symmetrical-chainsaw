@@ -24,7 +24,7 @@ def read(*names, **kwargs):
 
 
 setup(
-    name='symmetrical-chainsaw',
+    name='symmetrical_chainsaw',
     version='0.0.0',
     license='BSD-2-Clause',
     description='test package',
@@ -58,9 +58,9 @@ setup(
         'Topic :: Utilities',
     ],
     project_urls={
-        'Documentation': 'https://symmetrical-chainsaw.readthedocs.io/',
-        'Changelog': 'https://symmetrical-chainsaw.readthedocs.io/en/latest/changelog.html',
-        'Issue Tracker': 'https://github.com/yangchoo/symmetrical-chainsaw/issues',
+        'Documentation': 'https://symmetrical_chainsaw.readthedocs.io/',
+        'Changelog': 'https://symmetrical_chainsaw.readthedocs.io/en/latest/changelog.html',
+        'Issue Tracker': 'https://github.com/yangchoo/symmetrical_chainsaw/issues',
     },
     keywords=[
         # eg: 'keyword1', 'keyword2', 'keyword3',

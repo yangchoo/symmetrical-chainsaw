@@ -4,4 +4,4 @@ Usage
 
 To use Symmetrical in a project::
 
-	import symmetrical-chainsaw
+	import symmetrical_chainsaw

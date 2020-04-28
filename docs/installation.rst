@@ -4,4 +4,4 @@ Installation
 
 At the command line::
 
-    pip install symmetrical-chainsaw
+    pip install symmetrical_chainsaw

@@ -9,9 +9,6 @@ matrix:
   include:
     - python: '3.6'
       env:
-        - TOXENV=check
-    - python: '3.6'
-      env:
         - TOXENV=docs
     - env:
         - TOXENV=py35
@@ -25,9 +22,6 @@ matrix:
     - env:
         - TOXENV=py38
       python: '3.8'
-    - env:
-        - TOXENV=pypy
-      python: 'pypy'
     - env:
         - TOXENV=pypy3
         - TOXPYTHON=pypy3
