@@ -58,7 +58,7 @@ deploy:
     repo: yangchoo/symmetrical_chainsaw
     tags: true
     python: '3.6'
-    condition: "$TRAVIS_TAG =~ ^v[0-9]+\\.[0-9]+\\.[0-9]+$"
+    condition: '$TRAVIS_TAG =~ ^v[0-9]+\.[0-9]+\.[0-9]+$r'
 - provider: pypi
   skip_cleanup: true
   username: __token__
@@ -66,5 +66,5 @@ deploy:
   on:
     tags: true
     python: '3.6'
-    condition: "$TRAVIS_TAG =~ ^v[0-9]+\\.[0-9]+\\.[0-9]+$"
+    condition: '$TRAVIS_TAG =~ ^v[0-9]+\.[0-9]+\.[0-9]+$'
   password: "$SECRET1$SECRET2"
