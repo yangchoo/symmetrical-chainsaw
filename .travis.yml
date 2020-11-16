@@ -16,7 +16,7 @@ matrix:
     - TOXENV=py35
     python: '3.5'
   - env:
-    - TOXENV=py36
+    - TOXENV=py36 DEPLOY=TRUE
     python: '3.6'
   - env:
     - TOXENV=py37
@@ -58,7 +58,7 @@ deploy:
     repo: yangchoo/symmetrical_chainsaw
     tags: true
     python: '3.6'
-    condition: '$TRAVIS_TAG =~ ^v[0-9]+\.[0-9]+\.[0-9]+$r'
+    condition: '$TRAVIS_TAG =~ ^v[0-9]+\.[0-9]+\.[0-9]+$r AND env(DEPLOY) = true'
 - provider: pypi
   skip_cleanup: true
   username: __token__
@@ -66,5 +66,5 @@ deploy:
   on:
     tags: true
     python: '3.6'
-    condition: '$TRAVIS_TAG =~ ^v[0-9]+\.[0-9]+\.[0-9]+$'
+    condition: '$TRAVIS_TAG =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ and env(DEPLOY) = true'
   password: "$SECRET1$SECRET2"
