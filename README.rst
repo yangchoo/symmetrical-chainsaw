@@ -15,9 +15,6 @@ Overview
     * - package
       - | |version| |wheel| |supported-versions| |supported-implementations|
         | |commits-since|
-.. |docs| image:: https://readthedocs.org/projects/symmetrical_chainsaw/badge/?style=flat
-    :target: https://readthedocs.org/projects/symmetrical_chainsaw
-    :alt: Documentation Status
 
 .. |travis| image:: https://api.travis-ci.org/yangchoo/symmetrical_chainsaw.svg?branch=master
     :alt: Travis-CI Build Status
@@ -25,19 +22,19 @@ Overview
 
 .. |version| image:: https://img.shields.io/pypi/v/symmetrical_chainsaw.svg
     :alt: PyPI Package latest release
-    :target: https://pypi.org/project/symmetrical_chainsaw
+    :target: https://pypi.org/project/symmetrical-chainsaw
 
 .. |wheel| image:: https://img.shields.io/pypi/wheel/symmetrical_chainsaw.svg
     :alt: PyPI Wheel
-    :target: https://pypi.org/project/symmetrical_chainsaw
+    :target: https://pypi.org/project/symmetrical-chainsaw
 
 .. |supported-versions| image:: https://img.shields.io/pypi/pyversions/symmetrical_chainsaw.svg
     :alt: Supported versions
-    :target: https://pypi.org/project/symmetrical_chainsaw
+    :target: https://pypi.org/project/symmetrical-chainsaw
 
 .. |supported-implementations| image:: https://img.shields.io/pypi/implementation/symmetrical_chainsaw.svg
     :alt: Supported implementations
-    :target: https://pypi.org/project/symmetrical_chainsaw
+    :target: https://pypi.org/project/symmetrical-chainsaw
 
 .. |commits-since| image:: https://img.shields.io/github/commits-since/yangchoo/symmetrical_chainsaw/v0.0.0.svg
     :alt: Commits since latest release
@@ -66,8 +63,6 @@ You can also install the in-development version with::
 Documentation
 =============
 
-
-https://symmetrical_chainsaw.readthedocs.io/
 
 
 Development
