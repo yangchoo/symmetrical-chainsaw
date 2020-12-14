@@ -22,7 +22,7 @@ Overview
 
 .. |version| image:: https://img.shields.io/pypi/v/symmetrical_chainsaw.svg
     :alt: PyPI Package latest release
-    :target: https://pypi.org/project/symmetrical_chainsaw
+    :target: https://pypi.org/project/symmetrical-chainsaw
 
 .. |wheel| image:: https://img.shields.io/pypi/wheel/symmetrical_chainsaw.svg
     :alt: PyPI Wheel
@@ -38,7 +38,7 @@ Overview
 
 .. |commits-since| image:: https://img.shields.io/github/commits-since/yangchoo/symmetrical_chainsaw/v0.0.0.svg
     :alt: Commits since latest release
-    :target: https://github.com/yangchoo/symmetrical-chainsaw/compare/v0.0.0...master
+    :target: https://github.com/yangchoo/symmetrical_chainsaw/compare/v0.0.0...master
 
 
 
@@ -63,8 +63,6 @@ You can also install the in-development version with::
 Documentation
 =============
 
-
-https://symmetrical_chainsaw.readthedocs.io/
 
 
 Development
