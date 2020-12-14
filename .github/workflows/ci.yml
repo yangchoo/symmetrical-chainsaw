@@ -85,10 +85,17 @@ jobs:
       run:  |
         python -m build --sdist --wheel --outdir dist/
 
-    - name: Publish distribution to PyPI
-      uses: pypa/gh-action-pypi-publish@master
-      with:
-        password: ${{ secrets.PYPI_API_TOKEN  }}
+    - name: Get tag version
+      id: get_tag_version
+      run: |
+        echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
+        echo ::set-output name=VERSION_NO_PREFIX::${GITHUB_REF#refs/tags/v}
+
+    - name: Create Release Message
+      id: release_message
+      run: |
+        export MESSAGE_BODY="$(git --no-pager log -1 --pretty=format:'%b')"
+        echo ::set-output name=BODY::"$MESSAGE_BODY"
 
     - name: Create Release
       id: create_release
@@ -96,20 +103,24 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
       with:
-        tag_name: ${{ github.ref }}
-        release_name: ${{ github.ref }}
-        body: ${{ github.event.head_commit.message }}
-        draft: true 
+        tag_name: ${{ steps.get_tag_version.outputs.VERSION }}
+        release_name: ${{ steps.get_tag_version.outputs.VERSION }}
+        body: ${{ steps.release_message.outputs.BODY }}
+        draft: false
         prerelease: false
 
-      - name: Upload Release Asset
-        id: upload-release-asset 
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./dist/symmetrical_chainsaw-${{ github.ref }}.tar.gz
-          asset_name: symmetrical_chainsaw-${{ github.ref }}.tar.gz
-          asset_content_type: application/gzip
+    - name: Upload Release tar gzip
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./dist/symmetrical_chainsaw-${{ steps.get_tag_version.outputs.VERSION_NO_PREFIX }}.tar.gz
+        asset_name: symmetrical_chainsaw-${{ steps.get_tag_version.outputs.VERSION_NO_PREFIX }}.tar.gz
+        asset_content_type: application/gzip
 
+    - name: Publish distribution to PyPI
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+        password: ${{ secrets.PYPI_API_TOKEN  }}
