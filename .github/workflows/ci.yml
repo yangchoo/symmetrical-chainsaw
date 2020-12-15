@@ -94,8 +94,13 @@ jobs:
     - name: Create Release Message
       id: release_message
       run: |
-        export MESSAGE_BODY="$(git --no-pager log -1 --pretty=format:'%b')"
-        echo ::set-output name=BODY::"$MESSAGE_BODY"
+        # Substitutions required to get multi-line working. 
+        # See https://github.community/t/set-output-truncates-multiline-strings/16852
+        MESSAGE="$(git --no-pager log -1 --pretty=format:'%b')"
+        MESSAGE="${MESSAGE//'%'/'%25'}"
+        MESSAGE="${MESSAGE//$'\n'/'%0A'}"
+        MESSAGE="${MESSAGE//$'\r'/'%0D'}"
+        echo ::set-output name=BODY::$MESSAGE
 
     - name: Create Release
       id: create_release
@@ -106,7 +111,7 @@ jobs:
         tag_name: ${{ steps.get_tag_version.outputs.VERSION }}
         release_name: ${{ steps.get_tag_version.outputs.VERSION }}
         body: ${{ steps.release_message.outputs.BODY }}
-        draft: false
+        draft: false 
         prerelease: false
 
     - name: Upload Release tar gzip
